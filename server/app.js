@@ -10,10 +10,12 @@ const io = new Server(server, {
   cors: { origin: "*" },
 });
 
-app.use(express.static(path.join(__dirname, "client")));
+// Serve static files from client directory
+app.use(express.static(path.join(__dirname, "../client")));
 
+// Serve index.html explicitly
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "index.html"));
+  res.sendFile(path.join(__dirname, "../client", "index.html"));
 });
 
 io.on("connection", (socket) => {
